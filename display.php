@@ -24,6 +24,7 @@
                 <th scope="col">Lastname</th>
                 <th scope="col">Email-Address</th>
                 <th scope="col">Password</th>
+                <th scope="col">Description</th>
                 </tr>
             </thead>
 
@@ -51,12 +52,20 @@
                             <td>'.$lastname.'</td>
                             <td>'.$email.'</td>
                             <td>'.$password.'</td>
+                            <td>
+                            <button class="btn btn-warning"><a href="update.php?updateid='.$id.'" class="text-white" style="text-decoration: none;">update</a></button>
+                            <button class="btn btn-danger"><a href="delete.php?deleteid='.$id.'" class="text-white" style="text-decoration: none;">Delete</a></button>
+                            </td>
                             </tr>
                             ';  
                         }
                     }
                     
                 ?>
+
+
+
+
             </tbody>
         </table>
     </div>
