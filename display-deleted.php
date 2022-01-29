@@ -11,7 +11,7 @@
 <body>
         <div class="container py-5" style="width: 700px; ">
             <div class="alert alert-warning alert-dismissible fade show" role="alert">
-            <strong>User</strong> has been updated successfully
+            <strong>User</strong> has been deleted successfully
                 <button type="button" class="btn btn-success offset-md-6">
                     <a href="display.php" style="text-decoration:none; color: #fff;">Go back</a>
                 </button>

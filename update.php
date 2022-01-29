@@ -3,6 +3,16 @@
 
 
     $id = $_GET['updateid'];
+    $sql = "Select * from `crud` where id= $id";
+    $result= mysqli_query($conn, $sql);
+    $row = mysqli_fetch_assoc($result);
+    $username = $row['username']; 
+    $firstname= $row['firstname'];
+    $lastname= $row['lastname'];
+    $email = $row['email'];
+    $password=$row['password'];
+
+
 
     if (isset($_POST['submit'])) {
         $username= $_POST['username'];
@@ -11,13 +21,13 @@
         $email = $_POST['email'];
         $password=$_POST['password'];
 
-        $sql = "update into `crud` 
+        $sql = "update `crud` 
         set id= $id,
-        username=$username, 
-        firstname=$firstname, 
-        lastname=$lastname, 
-        email=$email, 
-        password=$password where id=$id";
+        username='$username', 
+        firstname='$firstname', 
+        lastname='$lastname', 
+        email='$email', 
+        password='$password' where id=$id";
         $result = mysqli_query($conn, $sql);
 
         if ($result) {
@@ -27,6 +37,47 @@
             die(mysqli_error($conn));
         }
     }
+
+
+
+    // if (isset($_POST['submit'])) {
+    //     $username = $_POST['username']; 
+    //     $firstname= $_POST['firstname'];
+    //     $lastname= $_POST['lastname'];
+    //     $email = $_POST['email'];
+    //     $password=$_POST['password'];
+
+    //     $sql = "update `crud` set
+    //     'username'= $username, 
+    //     'firstname'=$fistname, 
+    //     'lastname'= $lastname, 
+    //     'email'= $email, 
+    //     'lastname'=$lastname";
+
+    //     $result = $conn->query($sql);
+
+    //     if ($result == true) {
+    //         echo "Record updated";
+    //     }else{
+    //         echo "error $sql $conn->error";
+    //     }
+    // }
+
+    // if (isset($_GET['updateid'])) {
+    //     $user_id= $_GET['updateid'];
+
+
+
+    //     $result= $conn->query($sql);
+
+    //     if ($result->num_rows > 0) {
+    //         while ($row = $result->fetch_assoc()) {
+
+    //         }
+    //     }
+    // }
+
+
 ?>
 
 
@@ -43,26 +94,26 @@
 </head>
 <body>
     <div class="container" style="padding: 70px 50px 0px 0px;">
-        <form action="user.php" method="post" >
+        <form method="post" >
             <div class="mb-3 w-50">
             <label for="formGroupExampleInput" class="form-label">Username</label>
-            <input type="text" class="form-control" name="username" placeholder="Enter Username">
+            <input type="text" class="form-control" name="username" placeholder="Enter Username" value="<?php echo $username?>">
             </div>
             <div class="mb-3 w-50">
             <label for="formGroupExampleInput2" class="form-label">Firstname</label>
-            <input type="text" class="form-control" name="firstname" placeholder="Enter Firstname">
+            <input type="text" class="form-control" name="firstname" placeholder="Enter Firstname" value="<?php echo $firstname ?>">
             </div>
             <div class="mb-3 w-50">
             <label for="formGroupExampleInput2" class="form-label">Lastname</label>
-            <input type="text" class="form-control" name="lastname" placeholder="Enter Lastname">
+            <input type="text" class="form-control" name="lastname" placeholder="Enter Lastname" value="<?php echo $lastname ?>">
             </div>
             <div class="mb-3 w-50">
             <label for="formGroupExampleInput2" class="form-label">Password</label>
-            <input type="password" class="form-control" name="password" placeholder="Enter Password">
+            <input type="password" class="form-control" name="password" placeholder="Enter Password" value="<?php echo $password ?>">
             </div>
             <div class="mb-3 w-50">
             <label for="formGroupExampleInput2" class="form-label">email</label>
-            <input type="email" class="form-control" name="email" placeholder="Enter email">
+            <input type="email" class="form-control" name="email" placeholder="Enter email" value="<?php echo $email ?>">
             </div>
             <input type="submit" name="submit" class="btn btn-primary">
         </form>
